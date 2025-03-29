@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 160 84.1% 39.2%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 262.1 83.3% 57.8%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 47.4% 15.2%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 47.4% 15.2%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 156.2 93.5% 43.9%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 266.3 97.5% 63.9%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 21.5%;
+    --input: 217.2 32.6% 21.5%;
+    --ring: 224.3 76.5% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Custom Classes */
+.code-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10h30v30H10V10zm2 2v26h26V12H12zm5 5h16v16H17V17zm2 2v12h12V19H19z' fill='%23f1f5f9' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.typewriter-text {
+  overflow: hidden;
+  border-right: 2px solid;
+  white-space: nowrap;
+  width: 0;
+  animation: typewriter 3s steps(40) forwards, blink 1s infinite;
+}
+
+@keyframes typewriter {
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
+.chat-bubble-user {
+  border-radius: 18px 18px 18px 4px;
+}
+
+.chat-bubble-bot {
+  border-radius: 18px 18px 4px 18px;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.typing-indicator {
+  display: inline-flex;
+  align-items: center;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  margin: 0 1px;
+  background-color: hsl(var(--muted-foreground));
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
